@@ -1,12 +1,4 @@
-/**
- * ========================================================================
- * ARQUITECTURA DEL PROYECTO - CINEWEB COLABORATIVO (MÉTODO ABP)
- * Desarrollador: Junior Moreno Romero
- * Lógica: Uso de Arrays, Objetos y LocalStorage para persistencia de datos.
- * ========================================================================
- */
 
-// 1. BASE DE DATOS INICIAL (Las 4 películas de Avengers predeterminadas)
 const peliculasPredeterminadas = [
     { titulo: "Avengers: Endgame", director: "Anthony y Joe Russo", sinopsis: "El universo está en ruinas. Los Vengadores se reúnen para intentar deshacer las acciones de Thanos.", img: "assets/img/01.webp" },
     { titulo: "Avengers: Era de Ultrón", director: "Joss Whedon", sinopsis: "Tony Stark intenta reactivar un programa de paz, pero surge el temible y destructivo Ultrón.", img: "assets/img/02.webp" },
@@ -14,26 +6,23 @@ const peliculasPredeterminadas = [
     { titulo: "The Avengers", director: "Joss Whedon", sinopsis: "Nick Fury une a los héroes más poderosos de la Tierra para defender al mundo de Loki.", img: "assets/img/04.webp" }
 ];
 
-// Evento disparador: Al cargar por completo el DOM, renderiza las listas guardadas
+
 document.addEventListener("DOMContentLoaded", function() {
     inicializarPeliculas();
     mostrarComentarios();
 });
 
-/**
- * FUNCIÓN: Inicializa la cartelera uniendo los datos base con los del LocalStorage
- */
+
 function inicializarPeliculas() {
     const catalogo = document.getElementById("catalogoPeliculas");
-    if (!catalogo) return; // Validador de seguridad si se ejecuta en páginas secundarias
+    if (!catalogo) return; 
 
-    // Extraemos películas guardadas por el usuario en formato JSON string
     let peliculasCreadas = JSON.parse(localStorage.getItem("misPeliculas")) || [];
     
-    // Fusionamos ambos arreglos usando el operador Spread (...)
+   
     let todasLasPelis = [...peliculasPredeterminadas, ...peliculasCreadas];
     
-    catalogo.innerHTML = ""; // Limpieza de control de la rejilla
+    catalogo.innerHTML = ""; 
 
     // Inyección dinámica mediante bucle forEach
     todasLasPelis.forEach(peli => {
@@ -54,32 +43,30 @@ function inicializarPeliculas() {
  * FUNCIÓN: Permite a los usuarios subir nuevas películas y describirlas
  */
 function agregarPelicula(event) {
-    event.preventDefault(); // Bloquea la recarga de página por defecto del formulario
+    event.preventDefault();
 
     const titulo = document.getElementById("peliTitulo").value.trim();
     const director = document.getElementById("peliDirector").value.trim();
     const sinopsis = document.getElementById("peliSinopsis").value.trim();
     
-    // Poster genérico de marcador para las películas añadidas por la comunidad
+   
     const imgPorDefecto = "https://images.unsplash.com/photo-1536440136628-849c177e76a1?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80";
 
-    // Instancia del nuevo objeto estructurado
+   
     const nuevaPeli = { titulo: titulo, director: director, sinopsis: sinopsis, img: imgPorDefecto };
 
-    // Agregamos el objeto al registro local persistente
+   
     let peliculasCreadas = JSON.parse(localStorage.getItem("misPeliculas")) || [];
     peliculasCreadas.push(nuevaPeli);
     localStorage.setItem("misPeliculas", JSON.stringify(peliculasCreadas));
 
-    // Actualización reactiva de la UI
+   
     inicializarPeliculas();
     document.getElementById("formNuevaPeli").reset(); 
     alert("¡Excelente! Tu película y descripción se agregaron con éxito al catálogo público.");
 }
 
-/**
- * FUNCIÓN: Registra y guarda las críticas o comentarios en vivo en la base de datos local
- */
+
 function agregarComentario(event) {
     event.preventDefault();
     
@@ -117,9 +104,7 @@ function mostrarComentarios() {
     });
 }
 
-/**
- * CONTROLADORES LOGICOS: Validaciones de acceso a los formularios
- */
+c
 function validarLogin(event) {
     if(event) event.preventDefault();
     var usuario = document.getElementById("usuario").value.trim();
