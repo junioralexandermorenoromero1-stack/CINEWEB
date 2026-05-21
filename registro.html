@@ -39,16 +39,6 @@
             letter-spacing: 2px;
         }
 
-        nav a {
-            color: #ccc;
-            text-decoration: none;
-            margin-left: 20px;
-            font-size: 16px;
-            transition: 0.3s;
-        }
-
-        nav a:hover { color: var(--blanco); }
-
         form {
             background-color: #000000;
             padding: 35px;
@@ -77,10 +67,7 @@
             box-sizing: border-box;
         }
 
-        form input:focus {
-            outline: none;
-            border-color: var(--rojo);
-        }
+        form input:focus { outline: none; border-color: var(--rojo); }
 
         button {
             background-color: var(--rojo);
@@ -112,11 +99,6 @@
 
     <header>
         <div class="logo">CINEWEB</div>
-        <nav>
-            <a href="index.html">Inicio</a>
-            <a href="registro.html">Registrarse</a>
-            <a href="login.html">Iniciar Sesión</a>
-        </nav>
     </header>
 
     <main>
@@ -145,7 +127,7 @@
             <button type="submit" style="margin-bottom: 15px;">Crear Cuenta Nueva</button>
             
             <p style="text-align: center; font-size: 14px; margin: 0;">
-                <a href="login.html" style="color: #e50914; text-decoration: none; font-weight: bold;">¿Ya eres miembro? Inicia sesión aquí</a>
+                <a href="index.html" style="color: #e50914; text-decoration: none; font-weight: bold;">¿Ya eres miembro? Inicia sesión aquí</a>
             </p>
         </form>
     </main>
@@ -156,8 +138,7 @@
 
     <script>
         function ejecutarRegistro(event) {
-            event.preventDefault(); // Detiene el reinicio automático
-            
+            event.preventDefault();
             var nombre = document.getElementById("nombre").value.trim();
             var edad = parseInt(document.getElementById("edad").value, 10);
 
@@ -166,17 +147,13 @@
                 return false;
             }
             
-            // Regla de validación de edad obligatoria
             if (edad < 10 || edad > 85) {
                 alert("Registro rechazado: La edad reglamentaria debe estar entre los 10 y los 85 años.");
                 return false;
             }
             
-            // Alerta exitosa solicitada
             alert("¡Registro completado con éxito! Bienvenido a CINEWEB. Ahora inicia sesión.");
-            
-            // Redirección inmediata al login
-            window.location.href = "login.html";
+            window.location.href = "index.html"; // Redirige al login principal
             return false;
         }
     </script>
