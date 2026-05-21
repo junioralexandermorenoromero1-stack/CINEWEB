@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CINEWEB - Detalles de la Película</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">CINEWEB</div>
+        <nav>
+            <a href="principal.html">Inicio</a>
+            <a href="registro.html">Registrarse</a>
+            <a href="login.html">Iniciar Sesión</a>
+        </nav>
+    </header>
+
+    <main class="contenedor-detalles">
+        <div id="vistaPelicula" class="detalle-box">
+            <p style="text-align: center; padding: 20px;">Cargando detalles de la película...</p>
+        </div>
+    </main>
+
+   
+    <script src="script.js"></script>
+    <script>
+        window.onload = mostrarDetallePelicula;
+    </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CINEWEB</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
+</head>
+<body>
+
+    <header>
+        <h1>CINEWEB</h1>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="registro.html">Registrarse</a>
+            <a href="login.html">Iniciar sesión</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h2>Bienvenidos a CINETOP</h2>
+            <p>Descubre los mejores estrenos y gestiona tus películas favoritas en un solo lugar.</p>
+        </section>
+
+        <h2 class="seccion-titulo">Cartelera Destacada</h2>
+
+        <div class="catalogo">
+            <div class="pelicula">
+                <img src="IMGNS01/01.webp" alt="Avengers: Endgame">
+                <h3>Avengers: Endgame</h3>
+                <button onclick="VerPelicula('endgame')">Ver información</button>
+            </div>
+
+            <div class="pelicula">
+                <img src="IMGNS01/02.webp" alt="Avengers: Era de Ultrón">
+                <h3>Avengers: Era de Ultrón</h3>
+                <button onclick="VerPelicula('ultron')">Ver información</button>
+            </div>
+
+            <div class="pelicula">
+                <img src="IMGNS01/03.webp" alt="Avengers: Infinity War">
+                <h3>Avengers: Infinity War</h3>
+                <button onclick="VerPelicula('infinity')">Ver información</button>
+            </div>
+
+            <div class="pelicula">
+                <img src="IMGNS01/04.webp" alt="The Avengers">
+                <h3>The Avengers</h3>
+                <button onclick="VerPelicula('theavengers')">Ver información</button>
+            </div>
+        </div>
+
+        <div id="infoPeliculas" class="detalle-box"></div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 CINETOP. Diseñado por Junior Moreno Romero - Estudiante UNIMINUTO</p>
+    </footer>
+
+</body>
+</html>
