@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CINEWEB - Comunidad Cinéfila</title>
+    <title>CINEWEB - Iniciar Sesión</title>
     <style>
         :root {
             --rojo: #e50914;
@@ -30,9 +30,6 @@
             justify-content: space-between;
             align-items: center;
             border-bottom: 2px solid var(--rojo);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
         }
 
         .logo {
@@ -42,86 +39,33 @@
             letter-spacing: 2px;
         }
 
-        nav a {
-            color: #ccc;
-            text-decoration: none;
-            margin-left: 20px;
-            font-size: 16px;
-            transition: 0.3s;
-        }
-
-        nav a:hover { color: var(--blanco); }
-
-        .hero {
-            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            background-position: center;
-            text-align: center;
-            padding: 40px 20px;
-        }
-
-        .hero h1 { font-size: 2.5rem; margin-bottom: 10px; }
-        .hero p { color: #ccc; margin-top: 0; }
-
-        .layout-comunidad {
-            display: flex;
-            gap: 30px;
-            padding: 30px 5%;
-            flex-wrap: wrap;
-        }
-
-        .seccion-peliculas { flex: 2; min-width: 320px; }
-        .panel-interactivo { flex: 1; min-width: 300px; display: flex; flex-direction: column; gap: 25px; }
-
-        .seccion-titulo { font-size: 1.8rem; margin-bottom: 15px; border-left: 4px solid var(--rojo); padding-left: 10px; }
-
-        .catalogo {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-        }
-
-        .card {
-            background: var(--gris-oscuro);
+        form {
+            background-color: #000000;
+            padding: 35px;
             border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.5);
-            transition: transform 0.3s;
-            display: flex;
-            flex-direction: column;
+            max-width: 400px;
+            margin: 80px auto;
+            border: 1px solid #333;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.6);
         }
 
-        .card:hover { transform: scale(1.03); }
-        .card img { width: 100%; height: 340px; object-fit: cover; background-color: var(--gris-medio); }
-        .info { padding: 15px; }
-        .info h3 { margin: 0 0 10px 0; color: var(--rojo); font-size: 18px; }
-        .info p { margin: 5px 0; font-size: 14px; color: #bbb; line-height: 1.4; }
-
-        .caja-herramienta {
-            background: var(--gris-oscuro);
-            padding: 25px;
-            border-radius: 8px;
-            border-top: 4px solid var(--rojo);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        form label {
+            display: block;
+            margin-bottom: 8px;
+            color: #b3b3b3;
+            font-size: 14px;
         }
 
-        .caja-herramienta h3 { margin-top: 0; margin-bottom: 15px; font-size: 18px; }
-
-        form label { display: block; margin-bottom: 5px; font-size: 13px; color: #aaa; }
-
-        form input[type="text"], textarea {
+        form input[type="text"], form input[type="password"] {
             width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
+            padding: 12px;
+            margin-bottom: 20px;
             background-color: var(--gris-medio);
             border: 1px solid #444;
             color: white;
-            border-radius: 5px;
+            border-radius: 6px;
             box-sizing: border-box;
-            font-family: inherit;
         }
-
-        textarea { height: 90px; resize: none; }
 
         button {
             background-color: var(--rojo);
@@ -132,28 +76,11 @@
             cursor: pointer;
             font-weight: bold;
             width: 100%;
+            font-size: 15px;
             transition: 0.2s;
         }
 
         button:hover { background-color: #b80710; }
-
-        .comentarios-contenedor {
-            max-height: 280px;
-            overflow-y: auto;
-            margin-top: 15px;
-            padding-right: 5px;
-        }
-
-        .comentario-item {
-            background: var(--gris-medio);
-            padding: 12px;
-            border-radius: 5px;
-            margin-bottom: 12px;
-            border-left: 4px solid #00df89;
-        }
-
-        .comentario-item strong { color: #00df89; display: block; margin-bottom: 5px; }
-        .comentario-item p { margin: 0; font-size: 13.5px; font-style: italic; color: #eee; }
 
         footer {
             background-color: #000;
@@ -164,170 +91,52 @@
             border-top: 1px solid #222;
             margin-top: auto;
         }
-
-        @media (max-width: 900px) {
-            .layout-comunidad { flex-direction: column; }
-        }
     </style>
 </head>
 <body>
 
     <header>
         <div class="logo">CINEWEB</div>
-        <nav>
-            <a href="index.html">Inicio</a>
-            <a href="registro.html">Registrarse</a>
-            <a href="login.html">Iniciar Sesión</a>
-        </nav>
     </header>
 
     <main>
-        <section class="hero">
-            <h1>CINEWEB COLABORATIVO</h1>
-            <p>Resolviendo la necesidad de centralizar reseñas y permitir a los usuarios expandir la cartelera en tiempo real.</p>
-        </section>
-
-        <div class="layout-comunidad">
+        <form onsubmit="return ejecutarLogin(event)">
+            <h2 style="text-align: center; margin-top: 0; margin-bottom: 25px; color: #e50914;">Inicio de Sesión</h2>
             
-            <section class="seccion-peliculas">
-                <h2 class="seccion-titulo">Cartelera de la Comunidad</h2>
-                <div id="catalogoPeliculas" class="catalogo">
-                    </div>
-            </section>
+            <label for="usuario">Usuario o Correo Electrónico</label>
+            <input type="text" id="usuario" placeholder="Ej: junior_moreno" required>
 
-            <aside class="panel-interactivo">
-                <div class="caja-herramienta">
-                    <h3>🎬 Añadir Nueva Película</h3>
-                    <form id="formNuevaPeli" onsubmit="agregarPelicula(event)">
-                        <label for="peliTitulo">Título de la Película</label>
-                        <input type="text" id="peliTitulo" placeholder="Ej: Batman" required>
+            <label for="password">Contraseña</label>
+            <input type="password" id="password" placeholder="••••••••" required>
 
-                        <label for="peliDirector">Director</label>
-                        <input type="text" id="peliDirector" placeholder="Ej: Christopher Nolan" required>
-
-                        <label for="peliSinopsis">Reseña / Descripción</label>
-                        <textarea id="peliSinopsis" placeholder="Escribe tu reseña..." required></textarea>
-
-                        <button type="submit">Publicar en Cartelera</button>
-                    </form>
-                </div>
-
-                <div class="caja-herramienta">
-                    <h3>💬 Foro de Críticas en Vivo</h3>
-                    <form id="formComentario" onsubmit="agregarComentario(event)">
-                        <input type="text" id="autorComentario" placeholder="Tu Nombre / Usuario" required>
-                        <textarea id="textoComentario" placeholder="¿Qué opinas de la cartelera?" required></textarea>
-                        <button type="submit">Enviar Comentario</button>
-                    </form>
-
-                    <div id="listaComentarios" class="comentarios-contenedor">
-                        </div>
-                </div>
-            </aside>
-        </div>
+            <button type="submit" style="margin-top: 10px; margin-bottom: 20px;">Ingresar al Sistema</button>
+            
+            <p style="text-align: center; font-size: 14px; margin: 0;">
+                <a href="registro.html" style="color: #e50914; text-decoration: none; font-weight: bold;">¿No tienes cuenta todavía? Regístrate aquí</a>
+            </p>
+        </form>
     </main>
 
     <footer>
-        <p>&copy; 2026 CINEWEB | Aprendizaje Basado en Proyectos (ABP) | Diseñado por Junior Moreno Romero - UNIMINUTO</p>
+        <p>&copy; 2026 CINEWEB | Proyecto Final Programación Web | Estudiante: Junior Moreno Romero - UNIMINUTO</p>
     </footer>
 
     <script>
-        const peliculasBase = [
-            { 
-                titulo: "The Avengers", 
-                director: "Joss Whedon", 
-                sinopsis: "El inicio de todo. El equipo se une por primera vez bajo las órdenes de Nick Fury para detener la invasión de Loki.", 
-                img: "https://imgs.search.brave.com/_k6rnt1hAtzwj2ZrA30nwvlLc742_TXn1s2IeGACppg/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJzLmNvbS9p/bWFnZXMvaGQvY29v/bC1hdmVuZ2Vycy1w/b3N0ZXItd2l0aC1s/b2dvLTdmeHhxbHF6/cWtjODZzcTguanBn" 
-            },
-            { 
-                titulo: "Avengers: Era de Ultrón", 
-                director: "Joss Whedon", 
-                sinopsis: "Tony Stark crea por error una inteligencia artificial destructiva decidida a extinguir toda vida orgánica en la Tierra.", 
-                img: "https://imgs.search.brave.com/5H4fY6y5LITeCGOPjPclD018DI5S8ycG7OIuC0CACXc/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YXByb3h5LnR2dHJv/cGVzLm9yZy93aWR0/aC8xMjAwL2h0dHBz/Oi8vc3RhdGljLnR2/dHJvcGVzLm9yZy9w/bXdpa2kvcHViL2lt/YWdlcy9pbWdfODU5/Nl8xLmpwZWc" 
-            },
-            { 
-                titulo: "Avengers: Infinity War", 
-                director: "Anthony y Joe Russo", 
-                sinopsis: "Los superhéroes se alían para sacrificarlo todo en un intento desesperado por derrotar al poderoso Thanos antes de su chasquido.", 
-                img: "https://imgs.search.brave.com/4drlEmyfoyRSWSxGWVq6KmFnIXPToP_EHa5MZl94ulI/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NTFQM0xuUHlMREwu/anBn" 
-            },
-            { 
-                titulo: "Avengers: Endgame", 
-                director: "Anthony y Joe Russo", 
-                sinopsis: "El universo está en ruinas. Los miembros restantes del equipo se reúnen para deshacer las devastadoras acciones del Titán Loco.", 
-                img: "https://imgs.search.brave.com/Pw33aq_OSl185gqEMI0jLrbk5sFRNFC3mqaL8LVLaYQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJzLmNvbS9p/bWFnZXMvaGQvYXZl/bmdlcnMtZW5kZ2Ft/ZS1waWN0dXJlcy1h/OW4xMTZmaGJ5aW0w/Nzc2LmpwZw" 
+        function ejecutarLogin(event) {
+            event.preventDefault(); 
+            var usuario = document.getElementById("usuario").value.trim();
+            var pass = document.getElementById("password").value.trim();
+
+            if (usuario === "" || pass === "") {
+                alert("Por favor, ingrese sus credenciales completas.");
+                return false;
             }
-        ];
-
-        document.addEventListener("DOMContentLoaded", function() {
-            renderizarPeliculas();
-            renderizarComentarios();
-        });
-
-        function renderizarPeliculas() {
-            const catalogo = document.getElementById("catalogoPeliculas");
-            let creadas = JSON.parse(localStorage.getItem("misPeliculas")) || [];
-            let unificadas = [...peliculasBase, ...creadas];
-            catalogo.innerHTML = "";
-            unificadas.forEach(p => {
-                catalogo.innerHTML += `
-                    <div class="card">
-                        <img src="${p.img}" alt="${p.titulo}">
-                        <div class="info">
-                            <h3>${p.titulo}</h3>
-                            <p><strong>Director:</strong> ${p.director}</p>
-                            <p><strong>Reseña:</strong> ${p.sinopsis}</p>
-                        </div>
-                    </div>`;
-            });
-        }
-
-        function agregarPelicula(event) {
-            event.preventDefault();
-            const t = document.getElementById("peliTitulo").value.trim();
-            const d = document.getElementById("peliDirector").value.trim();
-            const s = document.getElementById("peliSinopsis").value.trim();
-            const de = "https://images.unsplash.com/photo-1536440136628-849c177e76a1?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80";
-
-            let creadas = JSON.parse(localStorage.getItem("misPeliculas")) || [];
-            creadas.push({ titulo: t, director: d, sinopsis: s, img: de });
-            localStorage.setItem("misPeliculas", JSON.stringify(creadas));
-
-            renderizarPeliculas();
-            document.getElementById("formNuevaPeli").reset();
-            alert("¡Película añadida al catálogo con éxito!");
-        }
-
-        function agregarComentario(event) {
-            event.preventDefault();
-            const a = document.getElementById("autorComentario").value.trim();
-            const m = document.getElementById("textoComentario").value.trim();
-
-            let lista = JSON.parse(localStorage.getItem("comentariosCine")) || [];
-            lista.push({ usuario: a, mensaje: m });
-            localStorage.setItem("comentariosCine", JSON.stringify(lista));
-
-            renderizarComentarios();
-            document.getElementById("formComentario").reset();
-        }
-
-        function renderizarComentarios() {
-            const contenedor = document.getElementById("listaComentarios");
-            let lista = JSON.parse(localStorage.getItem("comentariosCine")) || [];
-            contenedor.innerHTML = "";
             
-            if(lista.length === 0){
-                contenedor.innerHTML = `<div class="comentario-item"><strong>👤 @junior_moreno:</strong><p>"¡Espectacular! Esta plataforma colaborativa funciona excelente."</p></div>`;
-                return;
-            }
-
-            [...lista].reverse().forEach(c => {
-                contenedor.innerHTML += `
-                    <div class="comentario-item">
-                        <strong>👤 @${c.usuario}:</strong>
-                        <p>"${c.mensaje}"</p>
-                    </div>`;
-            });
+            alert("¡Inicio de sesión exitoso! Bienvenido al sistema interactivo de CINEWEB.");
+            
+            // Te manda directo a la cartelera protegida
+            window.location.href = "cartelera.html";
+            return false;
         }
     </script>
 </body>
