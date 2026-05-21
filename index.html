@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CINETOP - Cartelera Interactiva</title>
+    <title>CINEWEB - Comunidad Cinéfila</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
     <header>
-        <div class="logo">CINETOP</div>
+        <div class="logo">CINEWEB</div>
         <nav>
             <a href="index.html">Inicio</a>
             <a href="registro.html">Registrarse</a>
@@ -19,50 +19,54 @@
 
     <main>
         <section class="hero">
-            <h1>CINE EN TUS MANOS</h1>
-            <p>Resolviendo la necesidad de información técnica instantánea mediante conexión API en tiempo real.</p>
+            <h1>CINEWEB COLABORATIVO</h1>
+            <p>Resolviendo la necesidad de centralizar reseñas y permitir a los usuarios expandir la cartelera en tiempo real.</p>
         </section>
 
-        <section class="container">
-            <h2 class="seccion-titulo">Estrenos Destacados</h2>
+        <div class="layout-comunidad">
             
-            <div class="catalogo">
-                <div class="card">
-                    <img src="assets/img/01.webp" alt="Avengers Endgame">
-                    <div class="info">
-                        <h3>Avengers: Endgame</h3>
-                        <button onclick="consultarAPI('Avengers: Endgame')">Ver Ficha Técnica API</button>
+            <section class="seccion-peliculas">
+                <h2 class="seccion-titulo">Cartelera de la Comunidad</h2>
+                <div id="catalogoPeliculas" class="catalogo">
                     </div>
-                </div>
-                <div class="card">
-                    <img src="assets/img/02.webp" alt="Avengers Ultron">
-                    <div class="info">
-                        <h3>Avengers: Age of Ultron</h3>
-                        <button onclick="consultarAPI('Avengers: Age of Ultron')">Ver Ficha Técnica API</button>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="assets/img/03.webp" alt="Infinity War">
-                    <div class="info">
-                        <h3>Avengers: Infinity War</h3>
-                        <button onclick="consultarAPI('Avengers: Infinity War')">Ver Ficha Técnica API</button>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="assets/img/04.webp" alt="The Avengers">
-                    <div class="info">
-                        <h3>The Avengers</h3>
-                        <button onclick="consultarAPI('The Avengers')">Ver Ficha Técnica API</button>
-                    </div>
-                </div>
-            </div>
+            </section>
 
-            <div id="resultadoAPI" class="detalle-box"></div>
-        </section>
+            <aside class="panel-interactivo">
+                
+                <div class="caja-herramienta">
+                    <h3>🎬 Añadir Nueva Película</h3>
+                    <form id="formNuevaPeli" onsubmit="agregarPelicula(event)">
+                        <label for="peliTitulo">Título de la Película</label>
+                        <input type="text" id="peliTitulo" placeholder="Ej: Batman El Caballero de la Noche" required>
+
+                        <label for="peliDirector">Director</label>
+                        <input type="text" id="peliDirector" placeholder="Ej: Christopher Nolan" required>
+
+                        <label for="peliSinopsis">Reseña / Descripción</label>
+                        <textarea id="peliSinopsis" placeholder="Escribe de qué trata la película..." required></textarea>
+
+                        <button type="submit">Publicar en Cartelera</button>
+                    </form>
+                </div>
+
+                <div class="caja-herramienta">
+                    <h3>💬 Foro de Críticas en Vivo</h3>
+                    <form id="formComentario" onsubmit="agregarComentario(event)">
+                        <input type="text" id="autorComentario" placeholder="Tu Nombre / Usuario" required>
+                        <textarea id="textoComentario" placeholder="¿Qué opinas de la cartelera actual? Dejanos tu reseña..." required></textarea>
+                        <button type="submit" class="btn-comentario">Enviar Comentario</button>
+                    </form>
+
+                    <div id="listaComentarios" class="comentarios-contenedor">
+                        </div>
+                </div>
+
+            </aside>
+        </div>
     </main>
 
     <footer>
-        <p>&copy; 2026 CINETOP | Proyecto Final Programación Web | Estudiante: Junior Moreno Romero - UNIMINUTO</p>
+        <p>&copy; 2026 CINEWEB | Aprendizaje Basado en Proyectos (ABP) | Diseñado por Junior Moreno Romero</p>
     </footer>
 
     <script src="js/script.js"></script>
