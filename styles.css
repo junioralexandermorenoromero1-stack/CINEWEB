@@ -1,4 +1,3 @@
-/* Variables de color para un diseño limpio */
 :root {
     --rojo: #e50914;
     --negro: #141414;
@@ -25,6 +24,7 @@ header {
     position: sticky;
     top: 0;
     z-index: 1000;
+    border-bottom: 2px solid var(--rojo);
 }
 
 .logo {
@@ -39,40 +39,74 @@ nav a {
     text-decoration: none;
     margin-left: 20px;
     transition: 0.3s;
+    font-size: 16px;
 }
 
-nav a:hover { color: var(--blanco); }
+nav a:hover { 
+    color: var(--blanco); 
+}
 
 .hero {
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+    background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
     background-size: cover;
+    background-position: center;
     text-align: center;
-    padding: 80px 20px;
+    padding: 60px 20px;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.seccion-titulo {
+    padding: 20px 5% 0 5%;
+    font-size: 1.8rem;
 }
 
 .catalogo {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 30px;
-    padding: 40px 5%;
+    padding: 30px 5% 40px 5%;
 }
 
 .card {
     background: var(--gris-oscuro);
     border-radius: 10px;
     overflow: hidden;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.5);
     transition: transform 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
-.card:hover { transform: scale(1.03); }
+.card:hover { 
+    transform: scale(1.03); 
+}
 
 .card img {
     width: 100%;
-    height: 380px;
+    height: 360px;
     object-fit: cover;
+    border-bottom: 1px solid #333;
 }
 
-.info { padding: 20px; text-align: center; }
+.info { 
+    padding: 20px; 
+    text-align: center; 
+}
+
+.info h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 18px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 button {
     background-color: var(--rojo);
@@ -83,18 +117,73 @@ button {
     cursor: pointer;
     font-weight: bold;
     width: 100%;
+    transition: background-color 0.2s;
+}
+
+button:hover { 
+    background-color: #b80710; 
 }
 
 .detalle-box {
     margin: 0 5% 40px;
     padding: 30px;
     background: var(--gris-oscuro);
-    border-top: 4px solid var(--rojo);
-    display: none; /* Se activa con JS */
+    border-left: 5px solid var(--rojo);
+    border-radius: 8px;
+    display: none;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
 }
 
-/* Responsivo para móviles */
+form {
+    background-color: #000000;
+    padding: 35px;
+    border-radius: 10px;
+    max-width: 400px;
+    margin: 50px auto;
+    border: 1px solid #333;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+}
+
+form label {
+    display: block;
+    margin-bottom: 8px;
+    color: #b3b3b3;
+    font-size: 14px;
+}
+
+form input[type="text"], form input[type="password"], form input[type="email"], form input[type="number"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    background-color: #333;
+    border: 1px solid #444;
+    color: white;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+form input:focus {
+    outline: none;
+    border-color: var(--rojo);
+}
+
+footer {
+    background-color: #000;
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+    color: #737373;
+    border-top: 1px solid #222;
+    margin-top: auto;
+}
+
+/* Reglas CSS Responsivas */
 @media (max-width: 768px) {
-    header { flex-direction: column; gap: 15px; }
-    .hero h1 { font-size: 2rem; }
+    header { 
+        flex-direction: column; 
+        gap: 15px; 
+    }
+    .hero h1 { 
+        font-size: 1.8rem; 
+    }
 }
