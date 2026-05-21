@@ -1,69 +1,99 @@
-/**
- * FUNCIÓN DE CONSUMO DE API (FETCH)
- * Objetivo: Resolver la problemática de falta de información técnica 
- * consultando un servidor externo (OMDb API).
+/*
+ * consumo api
+
  */
 function consultarAPI(tituloPelicula) {
     const display = document.getElementById("resultadoAPI");
-    const apiKey = "394747ec"; // API Key real de Jefferson para el proyecto
+    
+    const apiKey = "394747ec"; 
     const url = `https://www.omdbapi.com/?t=${tituloPelicula}&apikey=${apiKey}`;
 
-    // Mostramos estado de carga
+    // 1. Mostrar contenedor y mensaje visual de carga
     display.style.display = "block";
-    display.innerHTML = "<p>Cargando información desde el servidor externo...</p>";
+    display.innerHTML = "<p style='color: #ccc; font-style: italic;'>Consultando bases de datos de la API externa... espere por favor.</p>";
+    display.scrollIntoView({ behavior: 'smooth' });
 
-    // Consumo asíncrono
+    // 2. Ejecutar petición HTTP asíncrona hacia el servidor de la API
     fetch(url)
-        .then(response => response.json()) // Convertimos respuesta a JSON
-        .then(data => {
+        .then(function(respuesta) {
+            return respuesta.json(); // Convierte los paquetes de red a JSON legible
+        })
+        .then(function(data) {
+          
             if(data.Response === "True") {
-                // Inyectamos los datos dinámicos en el HTML
+          
                 display.innerHTML = `
-                    <div style="display: flex; gap: 20px; flex-wrap: wrap;">
-                        <div style="flex: 1; min-width: 200px;">
-                            <h2 style="color: #e50914;">${data.Title}</h2>
-                            <p><strong>Año:</strong> ${data.Year}</p>
-                            <p><strong>Director:</strong> ${data.Director}</p>
-                            <p><strong>Actores:</strong> ${data.Actors}</p>
-                            <p><strong>Sinopsis:</strong> ${data.Plot}</p>
-                            <p><strong>Rating:</strong> ⭐ ${data.imdbRating}</p>
-                            <button onclick="cerrar()" style="width: auto; background: #555;">Cerrar Ficha</button>
-                        </div>
+                    <div style="line-height: 1.6;">
+                        <h2 style="color: #e50914; margin-top:0;">${data.Title} <span style='font-size:16px; color:#aaa;'>(Datos desde API Real)</span></h2>
+                        <p><strong>Año de Estreno:</strong> ${data.Year}</p>
+                        <p><strong>Director Técnico:</strong> ${data.Director}</p>
+                        <p><strong>Elenco Principal:</strong> ${data.Actors}</p>
+                        <p><strong>Sinopsis Oficial:</strong> ${data.Plot}</p>
+                        <p><strong>Calificación Mundial:</strong> ⭐ <span style='color:#f39c12; font-weight:bold;'>${data.imdbRating} / 10</span></p>
+                        <button onclick="cerrarCaja()" style="width: auto; background-color: #444; margin-top: 15px;">Cerrar Ficha Técnica</button>
                     </div>
                 `;
-                display.scrollIntoView({ behavior: 'smooth' });
             } else {
-                display.innerHTML = "<p>Error: No se encontró información en la API.</p>";
+                display.innerHTML = "<p style='color: #e50914;'>Error: No se encontró registro de la película en el servidor API.</p>";
             }
         })
-        .catch(error => {
-            console.error("Error API:", error);
-            display.innerHTML = "<p>Error de conexión con el servidor.</p>";
+        .catch(function(error) {
+            console.error("Fallo de red en API:", error);
+            display.innerHTML = "<p style='color: #e50914;'>Error: Problema de conexión o restricciones de red con el servidor.</p>";
         });
 }
 
-function cerrar() {
+/**
+ * Cierra visualmente la sección de información técnica
+ */
+function cerrarCaja() {
     document.getElementById("resultadoAPI").style.display = "none";
 }
 
-/** 
- * VALIDACIÓN DE FORMULARIO DE REGISTRO
+/**
+ * ========================================================================
+ * FUNCIÓN 2: VALIDACIÓN LOCAL DEL FORMULARIO DE INICIO DE SESIÓN (LOGIN)
+ * ========================================================================
  */
-function validarRegistro(e) {
-    e.preventDefault();
-    const nombre = document.getElementById("nombre").value;
-    const edad = document.getElementById("edad").value;
+function validarLogin(event) {
+    if(event) event.preventDefault(); // Evita que el formulario recargue la página incorrectamente
+    
+    var usuario = document.getElementById("usuario").value.trim();
+    var pass = document.getElementById("password").value.trim();
 
-    if(nombre === "" || edad === "") {
-        alert("Por favor rellene todos los campos.");
-        return;
+    // Comprobación de campos vacíos
+    if (usuario === "" || pass === "") {
+        alert("Por favor, complete todas las credenciales de ingreso.");
+        return false;
+    }
+    
+    alert("Simulación de Inicio de Sesión Exitosa. ¡Bienvenido!");
+    window.location.href = "index.html"; // Redirección limpia al home
+    return false;
+}
+
+/**
+ *validacion
+ */
+function validarRegistro(event) {
+    if(event) event.preventDefault();
+
+    var nombre = document.getElementById("nombre").value.trim();
+    var email = document.getElementById("email").value.trim();
+    var edad = document.getElementById("edad").value;
+
+   
+    if (nombre === "" || email === "" || edad === "") {
+        alert("Todos los campos del formulario de afiliación son obligatorios.");
+        return false;
     }
 
-    if(edad < 12 || edad > 90) {
-        alert("Edad no permitida para el sistema.");
-        return;
+    if (edad < 10 || edad > 80) {
+        alert("Registro denegado: La edad ingresada no es válida para el uso del sistema.");
+        return false;
     }
 
-    alert("Usuario registrado con éxito en CINETOP.");
+    alert("¡Cuenta creada con éxito! Proceda a iniciar sesión.");
     window.location.href = "login.html";
+    return false;
 }
