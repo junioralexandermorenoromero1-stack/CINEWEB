@@ -8,12 +8,11 @@ function consultarAPI(tituloPelicula) {
     const apiKey = "394747ec"; 
     const url = `https://www.omdbapi.com/?t=${tituloPelicula}&apikey=${apiKey}`;
 
-    // 1. Mostrar contenedor y mensaje visual de carga
     display.style.display = "block";
     display.innerHTML = "<p style='color: #ccc; font-style: italic;'>Consultando bases de datos de la API externa... espere por favor.</p>";
     display.scrollIntoView({ behavior: 'smooth' });
 
-    // 2. Ejecutar petición HTTP asíncrona hacia el servidor de la API
+  
     fetch(url)
         .then(function(respuesta) {
             return respuesta.json(); // Convierte los paquetes de red a JSON legible
