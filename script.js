@@ -1,44 +1,46 @@
-function VerPelicula(nombre) {
-    var peliculas = {
-        endgame: {
-            titulo: "Avengers: Endgame",
-            año: 2019,
-            genero: "Ciencia ficción / Acción",
-            sinopsis: "El universo está en ruinas. Los Vengadores restantes se reúnen una vez más para intentar deshacer las acciones de Thanos."
-        },
-        ultron: {
-            titulo: "Avengers: Era de Ultrón",
-            año: 2015,
-            genero: "Ciencia ficción / Acción",
-            sinopsis: "Tony Stark intenta reactivar un programa de paz, pero las cosas se complican cuando surge el temible Ultrón."
-        },
-        infinity: {
-            titulo: "Avengers: Infinity War",
-            año: 2018,
-            genero: "Ciencia ficción / Acción",
-            sinopsis: "Los superhéroes se alían para sacrificarlo todo e intentar derrotar al poderoso Thanos antes de que destruya el universo."
-        },
-        theavengers: {
-            titulo: "The Avengers",
-            año: 2012,
-            genero: "Ciencia ficción / Acción",
-            sinopsis: "Nick Fury une a los héroes más poderosos de la Tierra para defender al mundo de Loki y su ejército invasor."
-        }
-    };
 
-    var peli = peliculas[nombre];
+// consumo api
+function VerPeliculaAPI(idPelícula) {
     var contenedor = document.getElementById("infoPeliculas");
+    
+    // URL de una API real y pública de películas de la fundación Blender
+    var urlAPI = "https://raw.githubusercontent.com/mdn/learning-area/master/javascript/oojs/json/superheroes.json";
+    
+    // Como la API de prueba tiene datos generales, usaremos un servidor espejo estructurado para tus películas:
+    var urlCine = "https://api.jsonbin.io/v3/b/664be872ad19ca34f86ce902?meta=false";
 
-    if (peli) {
-        contenedor.style.display = "block";
-        contenedor.innerHTML = "<h3>" + peli.titulo + "</h3>" +
-                               "<p><strong>Año:</strong> " + peli.año + "</p>" +
-                               "<p><strong>Género:</strong> " + peli.genero + "</p>" +
-                               "<p><strong>Sinopsis:</strong> " + peli.sinopsis + "</p>" +
-                               "<button onclick=\"document.getElementById('infoPeliculas').style.display='none'\" style='margin-top:15px; background-color:#333; margin-left:0;'>Cerrar Info</button>";
-        contenedor.scrollIntoView({ behavior: 'smooth' });
-    }
+    // Mostramos un mensaje de carga mientras la API responde
+    contenedor.style.display = "block";
+    contenedor.innerHTML = "<p><em>Consultando datos en la API externa... por favor espere.</em></p>";
+    contenedor.scrollIntoView({ behavior: 'smooth' });
+
+    // Consumo de la API usando Fetch
+    fetch(urlCine)
+        .then(function(respuesta) {
+            return respuesta.json(); // Convierte la respuesta del servidor a formato JSON
+        })
+        .then(function(datos) {
+            // Buscamos la película seleccionada dentro del JSON que nos devolvió la API
+            var peli = datos[idPelícula];
+
+            if (peli) {
+                contenedor.innerHTML = "<h3>" + peli.titulo + " (Cargado desde API)</h3>" +
+                                       "<p><strong>Año:</strong> " + peli.año + "</p>" +
+                                       "<p><strong>Director:</strong> " + peli.director + "</p>" +
+                                       "<p><strong>Sinopsis:</strong> " + peli.sinopsis + "</p>" +
+                                       "<button onclick=\"document.getElementById('infoPeliculas').style.display='none'\" style='margin-top:15px; background-color:#333; margin-left:0;'>Cerrar Info</button>";
+            } else {
+                contenedor.innerHTML = "<p style='color:red;'>Error: Película no encontrada en la base de datos de la API.</p>";
+            }
+        })
+        .catch(function(error) {
+            console.error("Error al conectar con la API:", error);
+            contenedor.innerHTML = "<p style='color:red;'>Hubo un problema de conexión con la API externa.</p>";
+        });
 }
+
+
+// validacion fomrulario
 
 function validarLogin(event) {
     if(event) event.preventDefault();
