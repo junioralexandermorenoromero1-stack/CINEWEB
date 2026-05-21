@@ -3,61 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CINEWEB</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js"></script>
+    <title>CINETOP - Cartelera Interactiva</title>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
     <header>
-        <h1>CINEWEB</h1>
+        <div class="logo">CINETOP</div>
         <nav>
             <a href="index.html">Inicio</a>
             <a href="registro.html">Registrarse</a>
-            <a href="login.html">Iniciar sesión</a>
+            <a href="login.html" class="btn-nav">Iniciar Sesión</a>
         </nav>
     </header>
 
     <main>
         <section class="hero">
-            <h2>Bienvenidos a CINETOP</h2>
-            <p>Descubre los mejores estrenos y gestiona tus películas favoritas en un solo lugar con conexión API en tiempo real.</p>
+            <h1>CINE EN TUS MANOS</h1>
+            <p>Resolviendo la necesidad de información técnica instantánea mediante conexión API.</p>
         </section>
 
-        <h2 class="seccion-titulo">Cartelera Destacada (Conexión API)</h2>
-
-        <div class="catalogo">
-            <div class="pelicula">
-                <img src="imgns01/01.webp" alt="Sintel">
-                <h3>Sintel (Película Open Source)</h3>
-                <button onclick="VerPeliculaAPI('sintel')">Ver información API</button>
+        <section class="container">
+            <h2 class="seccion-titulo">Estrenos Destacados</h2>
+            
+            <div class="catalogo">
+                <div class="card">
+                    <img src="assets/img/01.webp" alt="Avengers Endgame">
+                    <div class="info">
+                        <h3>Avengers: Endgame</h3>
+                        <button onclick="consultarAPI('Avengers: Endgame')">Ver Ficha Técnica API</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="assets/img/02.webp" alt="Avengers Ultron">
+                    <div class="info">
+                        <h3>Avengers: Age of Ultron</h3>
+                        <button onclick="consultarAPI('Avengers: Age of Ultron')">Ver Ficha Técnica API</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="assets/img/03.webp" alt="Infinity War">
+                    <div class="info">
+                        <h3>Avengers: Infinity War</h3>
+                        <button onclick="consultarAPI('Avengers: Infinity War')">Ver Ficha Técnica API</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="assets/img/04.webp" alt="The Avengers">
+                    <div class="info">
+                        <h3>The Avengers</h3>
+                        <button onclick="consultarAPI('The Avengers')">Ver Ficha Técnica API</button>
+                    </div>
+                </div>
             </div>
 
-            <div class="pelicula">
-                <img src="imgns01/02.webp" alt="Big Buck Bunny">
-                <h3>Big Buck Bunny</h3>
-                <button onclick="VerPeliculaAPI('big_buck_bunny')">Ver información API</button>
-            </div>
-
-            <div class="pelicula">
-                <img src="imgns01/03.webp" alt="Tears of Steel">
-                <h3>Tears of Steel</h3>
-                <button onclick="VerPeliculaAPI('tears_of_steel')">Ver información API</button>
-            </div>
-
-            <div class="pelicula">
-                <img src="imgns01/04.webp" alt="Cosmos Laundromat">
-                <h3>Cosmos Laundromat</h3>
-                <button onclick="VerPeliculaAPI('cosmos_laundromat')">Ver información API</button>
-            </div>
-        </div>
-
-        <div id="infoPeliculas" class="detalle-box"></div>
+            <div id="resultadoAPI" class="detalle-box"></div>
+        </section>
     </main>
 
     <footer>
-        <p>&copy; 2026 CINETOP. Diseñado por Junior Moreno Romero - Estudiante UNIMINUTO</p>
+        <p>&copy; 2026 CINETOP | Proyecto Final Programación Web | Estudiante: Jefferson Moreno Romero</p>
     </footer>
 
+    <script src="js/script.js"></script>
 </body>
 </html>
