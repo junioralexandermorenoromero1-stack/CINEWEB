@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CINETOP - Iniciar Sesión</title>
+    <title>CINEWEB - Iniciar Sesión</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
     <header>
-        <div class="logo">CINETOP</div>
+        <div class="logo">CINEWEB</div>
         <nav>
             <a href="index.html">Inicio</a>
             <a href="registro.html">Registrarse</a>
@@ -19,24 +19,24 @@
 
     <main>
         <form onsubmit="return validarLogin(event)">
-            <h2 style="text-align: center; margin-bottom: 20px;">Inicio de Sesión</h2>
+            <h2 style="text-align: center; margin-top: 0; margin-bottom: 25px; color: #e50914;">Inicio de Sesión</h2>
             
-            <label for="usuario">Usuario / Correo</label>
-            <input type="text" id="usuario">
+            <label for="usuario">Usuario o Correo Electrónico</label>
+            <input type="text" id="usuario" placeholder="Ej: junior_moreno" required>
 
             <label for="password">Contraseña</label>
-            <input type="password" id="password">
+            <input type="password" id="password" placeholder="••••••••" required>
 
-            <button type="submit" style="width: 100%; margin: 10px 0 20px 0;">Ingresar</button>
+            <button type="submit" style="margin-top: 10px; margin-bottom: 20px;">Ingresar al Sistema</button>
             
             <p style="text-align: center; font-size: 14px; margin: 0;">
-                <a href="registro.html" style="color: #e50914; text-decoration: none; font-weight: bold;">¿No tienes cuenta? Regístrate aquí</a>
+                <a href="registro.html" style="color: #e50914; text-decoration: none; font-weight: bold;">¿No tienes cuenta todavía? Regístrate aquí</a>
             </p>
         </form>
     </main>
 
     <footer>
-        <p>&copy; 2026 CINETOP | Proyecto Final | Estudiante: Junior Moreno Romero - UNIMINUTO</p>
+        <p>&copy; 2026 CINEWEB | Proyecto Final Programación Web | Estudiante: Junior Moreno Romero - UNIMINUTO</p>
     </footer>
 
     <script src="js/script.js"></script>
