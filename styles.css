@@ -1,6 +1,5 @@
-/* ========================================================================
-   ESTILOS GENERALES Y VARIABLES (Diseño Limpio y Estilo Oscuro)
-   ======================================================================== */
+/* 
+   ESTILOS GENERALES Y VARIABLES (Diseño Limpio y Estilo Oscuro)*/
 :root {
     --rojo: #e50914;
     --negro: #141414;
@@ -19,9 +18,8 @@ body {
     min-height: 100vh;
 }
 
-/* ========================================================================
-   HEADER Y MENÚ DE NAVEGACIÓN
-   ======================================================================== */
+/* 
+   HEADER Y MENÚ DE NAVEGACIÓN */
 header {
     background-color: #000000;
     padding: 20px 5%;
@@ -54,9 +52,9 @@ nav a:hover {
     color: var(--blanco); 
 }
 
-/* ========================================================================
+/*
    SECCIÓN HERO (BANNER PRINCIPAL)
-   ======================================================================== */
+   */
 .hero {
     background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
     background-size: cover;
@@ -77,9 +75,9 @@ nav a:hover {
     margin: 0;
 }
 
-/* ========================================================================
+/*
    DISTRIBUCIÓN EN DOS COLUMNAS (FLEXBOX RESPONSIVO)
-   ======================================================================== */
+ */
 .layout-comunidad {
     display: flex;
     gap: 30px;
@@ -110,9 +108,9 @@ nav a:hover {
     padding-left: 10px;
 }
 
-/* ========================================================================
+/*
    SISTEMA DE TARJETAS EN REJILLA (GRID SYSTEM)
-   ======================================================================== */
+    */
 .catalogo {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -158,9 +156,8 @@ nav a:hover {
     line-height: 1.4;
 }
 
-/* ========================================================================
-   FORMULARIOS Y APORTES DE LA COMUNIDAD
-   ======================================================================== */
+/* 
+   FORMULARIOS Y APORTES DE LA COMUNIDAD */
 .caja-herramienta {
     background: var(--gris-oscuro);
     padding: 25px;
@@ -227,9 +224,9 @@ button:hover {
     background-color: #b80710; 
 }
 
-/* ========================================================================
+/* 
    SISTEMA DE COMENTARIOS (FORO EN VIVO)
-   ======================================================================== */
+    */
 .comentarios-contenedor {
     max-height: 280px;
     overflow-y: auto;
@@ -261,9 +258,8 @@ button:hover {
     font-style: italic;
 }
 
-/* ========================================================================
-   FOOTER (PIE DE PÁGINA)
-   ======================================================================== */
+/*
+   FOOTER (PIE DE PÁGINA) */
 footer {
     background-color: #000000;
     text-align: center;
@@ -274,9 +270,9 @@ footer {
     margin-top: auto;
 }
 
-/* ========================================================================
+/* 
    DISEÑO ADAPTABLE (RESPONSIVE MEDIA QUERIES)
-   ======================================================================== */
+    */
 @media (max-width: 900px) {
     .layout-comunidad { 
         flex-direction: column; 
